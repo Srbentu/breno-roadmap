@@ -1,3 +1,4 @@
+import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
@@ -19,12 +20,8 @@ export default function ThreePage() {
     const geometry = new THREE.BoxGeometry(1, 1, 1);
     const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     const mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(0.7, -0.6, 1);
     scene.add(mesh);
 
-    //axes helper
-    const axesHelper = new THREE.AxesHelper();
-    scene.add(axesHelper);
     /**
      * Sizes
      */
@@ -47,7 +44,29 @@ export default function ThreePage() {
       canvas: canvas,
     });
     renderer.setSize(sizes.width, sizes.height);
-    renderer.render(scene, camera);
+
+    //const clock = new THREE.Clock();
+
+    gsap.to(mesh.rotation, {
+      y: Math.PI * 2,
+      duration: 2,
+      repeat: -1,
+      ease: "linear",
+    });
+
+    //Animations
+    const tick = () => {
+      //const elapsedTime = clock.getElapsedTime();
+
+      //update objects
+      //mesh.rotation.y = Math.sin(elapsedTime);
+      //mesh.rotation.x = Math.cos(elapsedTime);
+
+      //Render
+      renderer.render(scene, camera);
+      window.requestAnimationFrame(tick);
+    };
+    tick();
 
     // Cleanup
     return () => {
