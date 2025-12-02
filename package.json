@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "next dev",
     "lint:check": "prettier --check .",
-    "lint:fix": "prettier --write ."
+    "lint:fix": "prettier --write .",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +22,7 @@
     "three": "^0.181.2"
   },
   "devDependencies": {
+    "jest": "29.6.2",
     "prettier": "^3.6.2"
   }
 }
