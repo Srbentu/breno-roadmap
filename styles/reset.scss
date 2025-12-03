@@ -10,6 +10,9 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  & body {
+    overflow: hidden;
+  }
 }
 
 body {
@@ -57,4 +60,11 @@ button {
   border: none;
   background: none;
   cursor: pointer;
+}
+
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
 }
