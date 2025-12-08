@@ -25,8 +25,12 @@ export default function ThreePage() {
     /**
      * Object
      */
-    const geometry = new THREE.BoxGeometry(1, 1, 1, 5, 5, 5);
-    const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+    //const geometry = new THREE.BoxGeometry(1, 1, 1, 5, 5, 5);
+    const geometry = new THREE.TorusKnotGeometry(0.7, 0.2, 100, 16);
+    const material = new THREE.MeshBasicMaterial({
+      color: 0xff0000,
+      wireframe: true,
+    });
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
 
