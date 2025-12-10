@@ -1,13 +1,29 @@
+import { gsap } from "gsap";
+import GUI from "lil-gui";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-//import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 export default function ThreePage() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
     if (!canvasRef.current) return;
+
+    /**
+     * DEBUG GUI
+     */
+    const gui = new GUI({
+      width: 400,
+      title: "Three.js Debugger",
+    });
+    gui.hide();
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "h") {
+        gui.show(gui._hidden);
+      }
+    });
+    const debugObject = {};
 
     // Canvas
     const canvas = canvasRef.current;
@@ -25,14 +41,49 @@ export default function ThreePage() {
     /**
      * Object
      */
-    //const geometry = new THREE.BoxGeometry(1, 1, 1, 5, 5, 5);
-    const geometry = new THREE.TorusKnotGeometry(0.7, 0.2, 100, 16);
+    const geometry = new THREE.BoxGeometry(1, 1, 1, 5, 5, 5);
+    debugObject.color = "#979af2";
+    //const geometry = new THREE.TorusKnotGeometry(0.7, 0.2, 100, 16);
     const material = new THREE.MeshBasicMaterial({
-      color: 0xff0000,
-      wireframe: true,
+      color: debugObject.color,
+      //wireframe: true,
     });
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
+
+    const cubeTweaks = gui.addFolder("Cube");
+    cubeTweaks
+      .add(mesh.position, "y")
+      .min(-3)
+      .max(3)
+      .step(0.01)
+      .name("elevation");
+    cubeTweaks.add(mesh, "visible");
+    cubeTweaks.add(mesh.material, "wireframe");
+    cubeTweaks.addColor(debugObject, "color").onChange(() => {
+      material.color.set(debugObject.color);
+    });
+    debugObject.spin = () => {
+      gsap.to(mesh.rotation, { y: mesh.rotation.y + Math.PI * 2 });
+    };
+    cubeTweaks.add(debugObject, "spin");
+    debugObject.subdivision = 2;
+    cubeTweaks
+      .add(debugObject, "subdivision")
+      .min(0)
+      .max(20)
+      .step(1)
+      .onChange(() => {
+        mesh.geometry.dispose();
+        mesh.geometry = new THREE.BoxGeometry(
+          1,
+          1,
+          1,
+          debugObject.subdivision,
+          debugObject.subdivision,
+          debugObject.subdivision,
+        );
+      });
 
     /**
      * Sizes
@@ -74,8 +125,8 @@ export default function ThreePage() {
       100,
     );
     camera.position.z = 2;
-    // camera.position.y = 2;
-    // camera.position.x = 2;
+    camera.position.y = 2;
+    camera.position.x = 2;
     // camera.lookAt(mesh.position);
     scene.add(camera);
 
@@ -120,6 +171,7 @@ export default function ThreePage() {
 
     // Cleanup
     return () => {
+      cubeTweaks.destroy();
       geometry.dispose();
       material.dispose();
       renderer.dispose();
