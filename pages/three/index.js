@@ -11,6 +11,13 @@ export default function ThreePage() {
     if (!canvasRef.current) return;
 
     /**
+     * TEXTURE
+     */
+    const loadingManager = new THREE.LoadingManager();
+    const textureLoader = new THREE.TextureLoader(loadingManager);
+    const texture = textureLoader.load("/assets/img/door.jpg");
+
+    /**
      * DEBUG GUI
      */
     const gui = new GUI({
@@ -42,10 +49,10 @@ export default function ThreePage() {
      * Object
      */
     const geometry = new THREE.BoxGeometry(1, 1, 1, 5, 5, 5);
-    debugObject.color = "#979af2";
+    //debugObject.color = "#979af2";
     //const geometry = new THREE.TorusKnotGeometry(0.7, 0.2, 100, 16);
     const material = new THREE.MeshBasicMaterial({
-      color: debugObject.color,
+      map: texture,
       //wireframe: true,
     });
     const mesh = new THREE.Mesh(geometry, material);
@@ -60,9 +67,9 @@ export default function ThreePage() {
       .name("elevation");
     cubeTweaks.add(mesh, "visible");
     cubeTweaks.add(mesh.material, "wireframe");
-    cubeTweaks.addColor(debugObject, "color").onChange(() => {
-      material.color.set(debugObject.color);
-    });
+    //cubeTweaks.addColor(debugObject, "color").onChange(() => {
+    //material.color.set(debugObject.color);
+    //});
     debugObject.spin = () => {
       gsap.to(mesh.rotation, { y: mesh.rotation.y + Math.PI * 2 });
     };
