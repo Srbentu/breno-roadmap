@@ -7,7 +7,9 @@ async function query(queryObject) {
     user: process.env.POSTGRES_USER,
     database: process.env.POSTGRES_DB,
     password: process.env.POSTGRES_PASSWORD,
-    ssl: true,
+    ssl: process.env.POSTGRES_HOST.includes("neon.tech")
+      ? { rejectUnauthorized: false }
+      : false,
   });
 
   try {
