@@ -24,7 +24,7 @@ export default function LightsPage() {
     const ambientLight = new THREE.AmbientLight(0xffffff, 1);
     scene.add(ambientLight);
 
-    gui.add(ambientLight, "intensity").min(0).max(10).step(0.01);
+    gui.add(ambientLight, "intensity").min(0).max(10).step(0.02);
     gui.add(ambientLight, "visible");
 
     const directionalLight = new THREE.DirectionalLight(0x00fffc, 0.9);
