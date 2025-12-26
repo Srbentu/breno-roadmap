@@ -79,6 +79,21 @@ export default function ScrollBasedAnimation() {
     mesh4.position.x = -2;
     mesh5.position.x = 2;
 
+    // Ajuste responsivo para mobile
+    if (window.innerWidth <= 768) {
+      mesh1.position.x = 0.8;
+      mesh2.position.x = -0.8;
+      mesh3.position.x = 0.8;
+      mesh4.position.x = -0.8;
+      mesh5.position.x = 0.8;
+    } else {
+      mesh1.position.x = 1.5;
+      mesh2.position.x = -1.5;
+      mesh3.position.x = 1.5;
+      mesh4.position.x = -1.5;
+      mesh5.position.x = 1.5;
+    }
+
     scene.add(mesh1, mesh2, mesh3, mesh4, mesh5);
 
     const sectionMeshes = [mesh1, mesh2, mesh3, mesh4, mesh5];
@@ -241,7 +256,7 @@ export default function ScrollBasedAnimation() {
     // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
-      gui.destroy();
+      //gui.destroy();
       renderer.dispose();
 
       // Dispose geometries and materials
