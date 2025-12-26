@@ -1,4 +1,5 @@
 import gsap from "gsap";
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
@@ -284,19 +285,29 @@ export default function ScrollBasedAnimation() {
       />
 
       <section className="section">
-        <h1>My Portfolio</h1>
+        <h1>
+          <Link href="/portfolio">My Portfolio</Link>
+        </h1>
       </section>
       <section className="section">
-        <h2>My projects</h2>
+        <h2>
+          <Link href="/projects">My Projects</Link>
+        </h2>
       </section>
       <section className="section">
-        <h2>Contact me</h2>
+        <h2>
+          <Link href="/contact">Contact me</Link>
+        </h2>
       </section>
       <section className="section">
-        <h2>Learnings</h2>
+        <h2>
+          <Link href="/learnings">Learnings</Link>
+        </h2>
       </section>
       <section className="section">
-        <h2>News</h2>
+        <h2>
+          <Link href="/news">News</Link>
+        </h2>
       </section>
 
       <style jsx>{`
