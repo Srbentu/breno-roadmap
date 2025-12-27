@@ -66,7 +66,7 @@ export default function GalaxyGenerator() {
           Math.pow(Math.random(), 2) * parameters.randomness * radius;
         const branches =
           ((i % parameters.branches) / parameters.branches) * 2 * Math.PI;
-
+        console.log(randomness);
         const randomX =
           Math.pow(Math.random(), parameters.randomnessPower) *
           (Math.random() < 0.5 ? 1 : -1) *

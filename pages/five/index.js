@@ -69,7 +69,6 @@ export default function ThreePage() {
         gui.show(gui._hidden);
       }
     });
-    const debugObject = {};
 
     // Canvas
     const canvas = canvasRef.current;
@@ -152,6 +151,7 @@ export default function ThreePage() {
 
     window.addEventListener("dblclick", (event) => {
       if (!document.fullscreenElement) {
+        console.log(event);
         canvas.requestFullscreen();
       } else {
         document.exitFullscreen();
@@ -186,11 +186,11 @@ export default function ThreePage() {
     renderer.setSize(sizes.width, sizes.height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    const clock = new THREE.Clock();
+    //const clock = new THREE.Clock();
 
     //Animations
     const tick = () => {
-      const elapsedTime = clock.getElapsedTime();
+      //const elapsedTime = clock.getElapsedTime();
 
       // Rotate all donuts
       donuts.forEach((donut) => {
