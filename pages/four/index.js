@@ -116,6 +116,7 @@ export default function ThreePage() {
 
     window.addEventListener("dblclick", (event) => {
       if (!document.fullscreenElement) {
+        console.log(event);
         canvas.requestFullscreen();
       } else {
         document.exitFullscreen();

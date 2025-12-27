@@ -6,7 +6,6 @@ import * as THREE from "three";
 export default function ScrollBasedAnimation() {
   const canvasRef = useRef(null);
   const sceneRef = useRef(null);
-  const guiRef = useRef(null);
 
   useEffect(() => {
     if (!canvasRef.current) return;

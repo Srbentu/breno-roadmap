@@ -25,28 +25,8 @@ export default function ThreePage() {
     const doorColorTexture = textureLoader.load(
       "/assets/textures/door/color.jpg",
     );
-    const doorAlphaTexture = textureLoader.load(
-      "/assets/textures/door/alpha.jpg",
-    );
-    const doorAmbientOcclusionTexture = textureLoader.load(
-      "/assets/textures/door/ambientOcclusion.jpg",
-    );
-    const doorHeightTexture = textureLoader.load(
-      "/assets/textures/door/height.jpg",
-    );
-    const doorNormalTexture = textureLoader.load(
-      "/assets/textures/door/normal.jpg",
-    );
-    const doorMetalnessTexture = textureLoader.load(
-      "/assets/textures/door/metalness.jpg",
-    );
-    const doorRoughnessTexture = textureLoader.load(
-      "/assets/textures/door/roughness.jpg",
-    );
+
     const matcapTexture = textureLoader.load("/assets/textures/matcaps/8.png");
-    const gradientTexture = textureLoader.load(
-      "/assets/textures/gradients/5.jpg",
-    );
 
     doorColorTexture.colorSpace = THREE.SRGBColorSpace;
     matcapTexture.colorSpace = THREE.SRGBColorSpace;
@@ -236,6 +216,7 @@ export default function ThreePage() {
 
     window.addEventListener("dblclick", (event) => {
       if (!document.fullscreenElement) {
+        console.log(event);
         canvas.requestFullscreen();
       } else {
         document.exitFullscreen();

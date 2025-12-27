@@ -69,7 +69,6 @@ export default function Particles() {
       depthWrite: false,
       //alphaTest: 0.001,
       //depthTest: false,
-      depthWrite: false,
       blending: THREE.AdditiveBlending,
       //color: new THREE.Color("#ff88cc"),
       vertexColors: true,
@@ -131,10 +130,10 @@ export default function Particles() {
     /**
      * Animate
      */
-    const clock = new THREE.Clock();
+    //const clock = new THREE.Clock();
 
     const tick = () => {
-      const elapsedTime = clock.getElapsedTime();
+      //const elapsedTime = clock.getElapsedTime();
 
       //particles.rotation.x = elapsedTime * 0.2;
 
