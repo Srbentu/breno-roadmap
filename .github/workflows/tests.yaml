@@ -10,7 +10,5 @@ jobs:
         with:
           node-version: "lts/Jod"
       - uses: pnpm/action-setup@v4
-        with:
-          version: 9.12.1
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
