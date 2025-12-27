@@ -60,6 +60,8 @@ function Learnings() {
                   <Link href="/three" className="is-link">
                     Basics
                   </Link>
+                </li>
+                <li>
                   <Link href="/physics" className="is-link">
                     Physics
                   </Link>
