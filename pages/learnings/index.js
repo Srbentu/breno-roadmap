@@ -66,6 +66,11 @@ function Learnings() {
                     Physics
                   </Link>
                 </li>
+                <li>
+                  <Link href="/imports" className="is-link">
+                    Imports
+                  </Link>
+                </li>
               </ul>
             </li>
           </ul>
