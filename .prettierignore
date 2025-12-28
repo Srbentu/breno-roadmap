@@ -1,2 +1,6 @@
 .next
 pnpm-lock.yaml
+public/draco/
+public/assets/draco/
+public/assets/models/
+public/assets/sounds/
