@@ -71,6 +71,11 @@ function Learnings() {
                     Imports
                   </Link>
                 </li>
+                <li>
+                  <Link href="/blender" className="is-link">
+                    Blender imports
+                  </Link>
+                </li>
               </ul>
             </li>
           </ul>
