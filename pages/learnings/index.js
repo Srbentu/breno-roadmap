@@ -76,6 +76,11 @@ function Learnings() {
                     Blender imports
                   </Link>
                 </li>
+                <li>
+                  <Link href="/status" className="is-link">
+                    Status Page API
+                  </Link>
+                </li>
               </ul>
             </li>
           </ul>
