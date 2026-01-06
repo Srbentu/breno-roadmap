@@ -5,7 +5,10 @@ import { createRouter } from "next-connect";
 const router = createRouter();
 router.get(getHandler);
 
-export default router.handler(controller.errorHandlers);
+export default router.handler({
+  onError: controller.errorHandlers.onErrorHandler,
+  onNoMatch: controller.errorHandlers.onNoMatchHandler,
+});
 
 async function getHandler(request, response) {
   const updatedAt = new Date().toISOString();
